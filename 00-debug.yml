@@ -11,6 +11,7 @@
       private: yes
       default: "password"
   vars:
+    DEFAULT_USER: vagrant
     ansible_user: "{{ DEFAULT_USER}}"
     ansible_password: "{{ DEFAULT_PASSWORD }}"
   tasks:
