@@ -1,0 +1,22 @@
+# For this to work , make sur:
+# 1- sshpass package is installed
+# 2- environement vairable ANSIBLE_HOST_KEY_CHECKING is set to False : export ANSIBLE_HOST_KEY_CHECKING=False
+---
+- hosts: microk8s
+  gather_facts: "no"
+  vars_prompt:
+    - name: DEFAULT_PASSWORD
+      prompt: "Enter default user password"
+      private: yes
+      default: "password"
+  vars:
+    ansible_user: "vagrant"
+    ansible_password: "{{ DEFAULT_PASSWORD }}"
+  tasks:
+    - name: "Get host name"
+      shell: "hostname"
+      register: hostname_result
+    - debug:
+        msg: "hostname is {{ hostname_result.stdout }}"
+
+

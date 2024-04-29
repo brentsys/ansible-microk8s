@@ -1,8 +1,8 @@
 ---
-TZ: 'Australia/Sydney'
+TZ: 'Cameroon/Douala'
 ANSIBLE_USER: ansible
-DEFAULT_USER: change_user_name
-DEFAULT_USER_PUB: 'replace with cat ~/.ssh/id_rsa.pub'
+DEFAULT_USER: vagrant
+DEFAULT_USER_PUB: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDo58M6kpstm8gbvHUD6KmMLLMxoAjrBi1P5iGusijtt ansible@ansible'
 # systemd_dir: /etc/systemd/system
 MASTER_IP: "{{ hostvars[groups['master'][0]]['ansible_host'] | default(groups['master'][0]) }}"
 APT_PACKAGES: [ 'bash', 'curl', 'wget', 'grep', 'git', 'ufw', 'net-tools']
