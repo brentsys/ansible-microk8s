@@ -1,6 +1,7 @@
 # For this to work , make sur:
 # 1- sshpass package is installed
-# 2- environement vairable ANSIBLE_HOST_KEY_CHECKING is set to False : export ANSIBLE_HOST_KEY_CHECKING=False
+# 2- environement vairable ANSIBLE_HOST_KEY_CHECKING is set to False :
+# export ANSIBLE_HOST_KEY_CHECKING=False
 ---
 - hosts: microk8s
   gather_facts: "no"
@@ -10,7 +11,7 @@
       private: yes
       default: "password"
   vars:
-    ansible_user: "vagrant"
+    ansible_user: "{{ DEFAULT_USER}}"
     ansible_password: "{{ DEFAULT_PASSWORD }}"
   tasks:
     - name: "Get host name"
