@@ -1,3 +1,4 @@
 .vagrant
 Vagrantfile
 **/*/vagrant_*
+ansible.cfg
