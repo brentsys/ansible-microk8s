@@ -12,7 +12,7 @@
       private: yes
       default: "password"
   vars:
-    ansible_user: "vagrant"
+    ansible_user: "{{ DEFAULT_USER }}"
     ansible_password: "{{ DEFAULT_PASSWORD }}"
   tasks:
   - name: "Create ansible user"
