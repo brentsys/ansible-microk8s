@@ -3,21 +3,13 @@
 # 2- environement vairable ANSIBLE_HOST_KEY_CHECKING is set to False :
 # export ANSIBLE_HOST_KEY_CHECKING=False
 ---
-- hosts: microk8s
+- hosts: node-1
   gather_facts: "no"
-  vars_prompt:
-    - name: DEFAULT_PASSWORD
-      prompt: "Enter default user password"
-      private: yes
-      default: "password"
   vars:
-    ansible_user: "{{ DEFAULT_USER}}"
-    ansible_password: "{{ DEFAULT_PASSWORD }}"
+    public_key: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
   tasks:
-    - name: "Get host name"
-      shell: "hostname"
-      register: hostname_result
     - debug:
-        msg: "hostname is {{ hostname_result.stdout }}"
+        msg: "public key is {{ DEFAULT_USER_PUB }}"
+    
 
 

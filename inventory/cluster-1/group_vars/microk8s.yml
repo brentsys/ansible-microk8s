@@ -1,10 +1,10 @@
 # Might need to change the DEFAULT_USER value
 # and definetely the DEFAULT_USER_PUB value
 ---
-TZ: 'Cameroon/Douala'
+TZ: 'Africa/Douala'
 ANSIBLE_USER: ansible
-DEFAULT_USER: 'change the default username'
-DEFAULT_USER_PUB: 'change to cat ~/.ssh/id_ed25519.pub'
+DEFAULT_USER: 'k8sAgent'
+DEFAULT_USER_PUB: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
 # systemd_dir: /etc/systemd/system
 MASTER_IP: "{{ hostvars[groups['master'][0]]['ansible_host'] | default(groups['master'][0]) }}"
 APT_PACKAGES: [ 'bash', 'curl', 'wget', 'grep', 'git', 'ufw', 'net-tools']
