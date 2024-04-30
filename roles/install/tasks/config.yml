@@ -1,4 +1,9 @@
 ## Raspberry pi specific configuration
+- name: Check if file exists
+  stat:
+    path: /boot/firmware/cmdline.txt
+  register: file_stat
+
 - name: "Enable control groups"
   register: cgroup
   ansible.builtin.lineinfile:
@@ -7,6 +12,7 @@
     regexp: '^((?!.*\bcgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory\b).*)$'
     line: '\1 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory'
   notify: server reboot
+  when: file_stat.stat.exists
 
 - name: Disable Swap
   ansible.builtin.command: swapoff -a
