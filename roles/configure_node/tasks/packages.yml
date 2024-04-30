@@ -15,12 +15,13 @@
     name: "*"
     state: latest
 
-- name: Install required packages
+- name: Install raspberry packages
   ansible.builtin.apt: 
-    name: "{{ INIT_PACKAGES }}"
+    name: "{{ RASPBERRY_PACKAGES }}"
     state: latest
     autoclean: yes
     autoremove: yes
+  when: "'raspi' in ansible_kernel"
 
 - name: Remove dependencies that are no longer required
   ansible.builtin.apt:

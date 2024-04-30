@@ -9,6 +9,7 @@ DEFAULT_USER_PUB: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
 MASTER_IP: "{{ hostvars[groups['master'][0]]['ansible_host'] | default(groups['master'][0]) }}"
 APT_PACKAGES: [ 'bash', 'curl', 'wget', 'grep', 'git', 'ufw', 'net-tools']
 MICROK8S_CHANNEL: '1.22/stable'
+RASPBERRY_PACKAGES: ["linux-modules-extra-raspi"]
 DASHBOARD_ENABLED: false
 DNS_ENABLED: true
 DNS_SERVER: '192.168.8.1'
